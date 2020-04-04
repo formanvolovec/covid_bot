@@ -17,7 +17,9 @@ def start(message):
     btn6 = types.KeyboardButton('Италия')
     btn7 = types.KeyboardButton('Испания')
     btn8 = types.KeyboardButton('Германия')
-    markup.add(btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8)
+    btn9 = types.KeyboardButton('Израиль')
+    btn10 = types.KeyboardButton('Польша')
+    markup.add(btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btn10)
 
     send_message = f"<b>Привет {message.from_user.first_name}!</b>\nЧтобы узнать данные про коронавируса " \
                    f"напишите название страны.\n"
@@ -42,6 +44,16 @@ def mess(message):
         location = covid19.getLocationByCountryCode("ES")
     elif get_message_bot == "германия":
         location = covid19.getLocationByCountryCode("DE")
+    elif get_message_bot == "китай":
+        location = covid19.getLocationByCountryCode("CN")
+    elif get_message_bot == "польша":
+        location = covid19.getLocationByCountryCode("PL")
+    elif get_message_bot == "франция":
+        location = covid19.getLocationByCountryCode("FR")
+    elif get_message_bot == "япония":
+        location = covid19.getLocationByCountryCode("JP")
+    elif get_message_bot == "израиль":
+        location = covid19.getLocationByCountryCode("IL")
     else:
         location = covid19.getLatest()
         final_message = f"<u>Данные по всему миру:</u>\n<b>Заболевших: </b>{location['confirmed']:,}\n<b>Сметрей: </b>{location['deaths']:,}"
@@ -51,7 +63,7 @@ def mess(message):
         time = date[1].split(".")
         final_message = f"<u>Данные по стране:</u>\nНаселение: {location[0]['country_population']:,}\n" \
                         f"Последнее обновление: {date[0]} {time[0]}\nПоследние данные:\n<b>" \
-                        f"Заболевших: </b>{location[0]['latest']['confirmed']:,}\n<b>Сметрей: </b>" \
+                        f"Заболевших: </b>{location[0]['latest']['confirmed']:,}\n<b>Смертей: </b>" \
                         f"{location[0]['latest']['deaths']:,}"
 
     bot.send_message(message.chat.id, final_message, parse_mode='html')
