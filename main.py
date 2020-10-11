@@ -2,7 +2,7 @@ import telebot
 from telebot import types
 import COVID19Py
 
-covid19 = COVID19Py.COVID19()
+covid19 = COVID19Py.COVID19(data_source="csbs")
 bot = telebot.TeleBot('1227263304:AAEend_3LOV1JuYr0XujDo-4oI3rNU0Vfbo')
 
 
